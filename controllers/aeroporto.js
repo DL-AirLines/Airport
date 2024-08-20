@@ -3,17 +3,17 @@ let nextId = 1;
 
 const model = (body, id = nextId++) => {
     if (
-        body.nome != "" &&
-        body.empresa != "" &&
+        body.viagens != "" &&
         body.aviao != "" &&
-        body.viagem != ""
+        body.empresa != "" &&
+        body.nome != ""
     ) {
         return {
             id,
-            nome: body.nome,
-            empresa: body.empresa,
+            viagens: body.viagens,
             aviao: body.aviao,
-            viagem: body.viagem
+            empresa: body.empresa,
+            nome: body.nome
         }
     }
 };
@@ -32,7 +32,7 @@ const index = () => {
 };
 
 const show = (id) => {
-    const aeromoca = db.find(el => el.id == id)
+    const aeroporto = db.find(el => el.id == id)
 };
 
 const update = (body, id) => {
