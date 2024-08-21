@@ -27,10 +27,6 @@ const store = (body) => {
     return 400
 };
 
-const index = () => {
-    return db
-};
-
 const show = (id) => {
     const aeromoca = db.find(el => el.id == id)
 };
@@ -60,6 +56,6 @@ const destroy = (id) => {
     return 400
 };
 
-const showAll = () => db;
+const index = () => db;
 
-module.exports = {store, index, show, update, destroy, showAll}
+module.exports = {store, index, show, update, destroy}

@@ -1,34 +1,34 @@
 const db = [];
+let nextId = 1;
 
-const nextId = 1;
-
-const model = (passageiro, id = nextId++) => {
-    if(passageiro.nome != "" && passageiro.nome != undefined && passageiro.cpf != "" && isNaN(passageiro.cpf) && isNaN(passageiro.idade) && passageiro.contato != "" && passageiro.contato != undefined ){
-        return{
+const model = (body, id = nextId++) => {
+    if(
+        body.nome != "" && body.nome != undefined &&
+        body.cpf != "" && parseInt(body.cpf) &&
+        parseInt(body.idade) &&
+        body.contato != "" && body.contato != undefined 
+    ){
+        return {
             id,
-            nome: passageiro.nome,
-            cpf: passageiro.cpf,
+            nome: body.nome,
+            cpf: body.cpf,
             // viagem: ...
             //passagem ...
-            idade: passageiro.idade,
-            contato: passageiro.contato,
-        };
-    };
+            idade: body.idade,
+            contato: body.contato
+        }
+    }
 };
 
 const store = (body) => {
+    console.log("body", body)
     const novo = model(body);
-
     if(novo){
         db.push(novo);
-        return 200;
+        return 201;
     }
     return 400;
 };
-
-const index = () => {
-    return db;
-}
 
 const show = (id) => db.find((el) => el.id == id);   
 
@@ -49,10 +49,14 @@ const destroy = (id) => {
 
     if(index != -1){
         db.splice(index, 1);
+        return 200;
     }
+    return 400
 };
 
+const index = () => db;
+
 module.exports = {
-    model, store, index, show, update, destroy
+    store, index, show, update, destroy
 }
 

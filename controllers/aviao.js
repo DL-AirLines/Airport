@@ -1,5 +1,4 @@
 const db = [];
-
 let nextId = 1;
 
 const model = (body, id = nextId++) => {
@@ -24,13 +23,9 @@ const store = body => {
     return 400;
 }
 
-const index = () => {
-    return db;
-}
-
 const show = id => {
     db.find(el => el.id == id);
-}
+};
 
 const update = (body, id) => {
     const index = db.findIndex(el => el.id == id);
@@ -53,8 +48,8 @@ const destroy = (id) => {
     return 404;
 };
 
-const showAll = () => db;
+const index = () => db;
 
 module.exports = {
-    model, store, show, index, update, destroy, showAll
+    store, show, index, update, destroy
 };
