@@ -2,11 +2,11 @@ const db = [];
 
 let nextId = 1;
 
-const model = (id = nextId++) => {
-    if(body.airPlane != "" && body.airPlane != undefined){
+const model = (body, id = nextId++) => {
+    if(body.nome != "" && body.nome != undefined){
         return{
             id,
-            airPlane: body.name,
+            nome: body.nome,
             //empresa: body.empresa
         };
     };
@@ -32,7 +32,7 @@ const show = id => {
     db.find(el => el.id == id);
 }
 
-const update = (id, body) => {
+const update = (body, id) => {
     const index = db.findIndex(el => el.id == id);
 
     const novo = model(body, parseInt(id));
@@ -53,6 +53,8 @@ const destroy = (id) => {
     return 404;
 };
 
+const showAll = () => db;
+
 module.exports = {
-    model, store, show, index, update, destroy
-}
+    model, store, show, index, update, destroy, showAll
+};

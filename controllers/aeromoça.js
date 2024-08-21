@@ -1,19 +1,19 @@
-const db  = [];
+const db = [];
 let nextId = 1;
 
-const model = (aeromoca, id = nextId++) => {
+const model = (body, id = nextId++) => {
     if (
-        aeromoca.nome != "" && aeromoca.nome != undefined &&
-        aeromoca.empresa != "" && aeromoca.empresa != undefined &&
-        aeromoca.aviao != "" && aeromoca.aviao != undefined &&
-        aeromoca.viagem != "" && aeromoca.viagem != undefined
+        body.nome != "" && body.nome != undefined &&
+        body.empresa != "" && body.empresa != undefined &&
+        body.aviao != "" && body.aviao != undefined &&
+        body.viagem != "" && body.viagem != undefined
     ) {
         return {
             id,
-            nome: aeromoca.nome,
-            empresa: aeromoca.empresa,
-            aviao: aeromoca.aviao,
-            viagem: aeromoca.viagem
+            nome: body.nome,
+            empresa: body.empresa,
+            aviao: body.aviao,
+            viagem: body.viagem
         }
     }
 };
@@ -36,9 +36,13 @@ const show = (id) => {
 };
 
 const update = (body, id) => {
-    const index = db.findIndex(el => el.id == el)
+    // console.log('body: ', body) - Debug para achar o problema
+    // console.log('id', id) - Debug para achar o problema
+    const index = db.findIndex(el => el.id == id)
     const novo = model(body,id)
 
+    console.log(index)
+    console.log(novo)
     if(index != -1 && novo){
         db[index] = novo
         return 200;
@@ -46,8 +50,8 @@ const update = (body, id) => {
     return 400
 };
 
-const destroy = (body,id) => {
-    const index = db.findIndex(el => el.id == el)
+const destroy = (id) => {
+    const index = db.findIndex(el => el.id == id)
 
     if(index != -1){
         db.splice(index,1)
@@ -56,4 +60,6 @@ const destroy = (body,id) => {
     return 400
 };
 
-module.exports = {store, index, show, update, destroy}
+const showAll = () => db;
+
+module.exports = {store, index, show, update, destroy, showAll}
