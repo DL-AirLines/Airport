@@ -1,19 +1,19 @@
 const db  = [];
 let nextId = 1;
 
-const model = (body, id = nextId++) => {
+const model = (piloto, id = nextId++) => {
     if (
-        body.nome != "" &&
-        body.empresa != "" &&
-        body.aviao != "" &&
-        body.viagem != ""
+        piloto.nome != "" && piloto.nome != undefined &&
+        piloto.empresa != "" && piloto.empresa != undefined &&
+        piloto.aviao != "" && piloto.aviao != undefined &&
+        piloto.viagem != "" && piloto.viagem != undefined
     ) {
         return {
             id,
-            nome: body.nome,
-            empresa: body.empresa,
-            aviao: body.aviao,
-            viagem: body.viagem
+            nome: piloto.nome,
+            empresa: piloto.empresa,
+            aviao: piloto.aviao,
+            viagem: piloto.viagem
         }
     }
 };
