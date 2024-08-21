@@ -3,7 +3,7 @@ const db = [];
 let nextId = 1;
 
 const model = (id = nextId++) => {
-    if(body.airPlane != "" && body.airPlane != undefined &&){
+    if(body.airPlane != "" && body.airPlane != undefined){
         return{
             id,
             airPlane: body.name,
@@ -52,3 +52,7 @@ const destroy = (id) => {
     };
     return 404;
 };
+
+module.exports = {
+    model, store, show, index, update, destroy
+}
