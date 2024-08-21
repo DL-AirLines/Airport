@@ -52,3 +52,7 @@ const destroy = (id) => {
     };
     return 404;
 };
+
+module.exports = {
+    model, store, show, index, update, destroy
+}
