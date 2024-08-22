@@ -31,16 +31,60 @@ header i{
 
 header ul{
     list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font: bold 1.5rem sans-serif;
+    text-transform: uppercase;
+    color: grey;
 }
 
 header ul li{
-    display: inline-block;
-    margin: 0 40px;
+    padding: 0 .5em .25em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: .3s;
+
+    display:inline-block;
+    
+
 }
+
+
+ul li:hover {
+    color: #fff;
+  }
+  ul li:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness */
+    background: #050505; /* the color */
+    scale: 0 1;
+    transition: .3s, translate 0s .3s;
+  }
+  ul:hover li:before {
+    scale: 1;
+  }
+  ul li:hover:before {
+    translate: 0;
+    transition: .3s;
+  }
+  ul:hover li:has(~ li:hover):before {
+    translate: 100% 0;
+    transition: .2s .2s,scale 0s .4s;
+  }
+  ul:hover li:hover ~ li:before {
+    translate: -100% 0;
+    transition: .2s .2s,scale 0s .4s;
+  }
+  
+
 
 header ul li a{
     color: #ffff;
     text-decoration: none;
+    
 }
 
 .fundo{
@@ -49,4 +93,17 @@ header ul li a{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.fundo h1{
+    font-size: 3em;
+    color: aliceblue;
+}
+
+.fundo h1 span{
+    color: rgb(55, 70, 83);
 }
