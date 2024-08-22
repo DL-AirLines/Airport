@@ -4,7 +4,8 @@
   "description": "Airport",
   "main": "index.js",
   "scripts": {
-    "test": "teste"
+    "test": "teste",
+    "dev": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
