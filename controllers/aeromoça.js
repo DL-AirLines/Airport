@@ -27,9 +27,7 @@ const store = (body) => {
     return 400
 };
 
-const show = (id) => {
-    const aeromoca = db.find(el => el.id == id)
-};
+const show = id => db.find(el => el.id == id);
 
 const update = (body, id) => {
     // console.log('body: ', body) - Debug para achar o problema
