@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+}
+
+.container{
+    max-width: 1280px;
+    margin: auto;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /*Um elemento em cada estremidade */
+}
+
+header{
+    width: 100%;
+    padding: 40px 4%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+header i{
+    font-size: 30px;
+    color: black;
+}
+
+header ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font: bold 1.5rem sans-serif;
+    text-transform: uppercase;
+    color: grey;
+}
+
+header ul li{
+    padding: 0 .5em .25em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: .3s;
+
+    display:inline-block;
+    
+
+}
+
+
+ul li:hover {
+    color: #fff;
+  }
+  ul li:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness */
+    background: #050505; /* the color */
+    scale: 0 1;
+    transition: .3s, translate 0s .3s;
+  }
+  ul:hover li:before {
+    scale: 1;
+  }
+  ul li:hover:before {
+    translate: 0;
+    transition: .3s;
+  }
+  ul:hover li:has(~ li:hover):before {
+    translate: 100% 0;
+    transition: .2s .2s,scale 0s .4s;
+  }
+  ul:hover li:hover ~ li:before {
+    translate: -100% 0;
+    transition: .2s .2s,scale 0s .4s;
+  }
+  
+
+
+header ul li a{
+    color: #ffff;
+    text-decoration: none;
+    
+}
+
+.fundo{
+    height: 100vh;
+    background-image: url(img/banner1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.fundo h1{
+    font-size: 3em;
+    color: aliceblue;
+}
+
+.fundo h1 span{
+    color: rgb(55, 70, 83);
+}
