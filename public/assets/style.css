@@ -41,44 +41,42 @@ header ul{
 
 header ul li{
     padding: 0 .5em .25em;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: .3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
 
     display:inline-block;
-    
-
 }
 
 
 ul li:hover {
     color: #fff;
-  }
-  ul li:before {
+}
+    ul li:before {
     content: "";
     position: absolute;
-    inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness */
-    background: #050505; /* the color */
+    inset: calc(100% - 3px) 0 0 0; 
+    background: #ffffffb6; 
     scale: 0 1;
     transition: .3s, translate 0s .3s;
-  }
-  ul:hover li:before {
+}
+    ul:hover li:before {
     scale: 1;
-  }
-  ul li:hover:before {
+}
+    ul li:hover:before {
     translate: 0;
     transition: .3s;
-  }
-  ul:hover li:has(~ li:hover):before {
+}
+    ul:hover li:has(~ li:hover):before {
     translate: 100% 0;
     transition: .2s .2s,scale 0s .4s;
-  }
-  ul:hover li:hover ~ li:before {
+}
+    ul:hover li:hover ~ li:before {
     translate: -100% 0;
     transition: .2s .2s,scale 0s .4s;
-  }
-  
+}
+
 
 
 header ul li a{
@@ -92,7 +90,7 @@ header ul li a{
     background-image: url(img/banner1.jpg);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
 
     display: flex;
     align-items: center;
@@ -102,8 +100,88 @@ header ul li a{
 .fundo h1{
     font-size: 3em;
     color: aliceblue;
+    margin-bottom: 7rem;
 }
 
 .fundo h1 span{
     color: rgb(55, 70, 83);
 }
+
+
+/*-------------Barra de Navegação---------------*/
+
+.nav-list {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-list li {
+    letter-spacing: 3px;
+    margin-left: 32px;
+  }
+  
+  .mobile-menu {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .mobile-menu div {
+    width: 32px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+    transition: 0.3s;
+  }
+  
+  @media (max-width: 999px) {
+    body {
+      overflow-x: hidden;
+    }
+    .nav-list {
+      position: absolute;
+      top: 8vh;
+      right: 0;
+      width: 50vw;
+      height: 92vh;
+      background: #23232e;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in;
+    }
+    .nav-list li {
+      margin-left: 0;
+      opacity: 0;
+    }
+    .mobile-menu {
+      display: block;
+    }
+  }
+  
+  .nav-list.active {
+    transform: translateX(0);
+  }
+  
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
+  }
+  
+  .mobile-menu.active .line2 {
+    opacity: 0;
+  }
+  
+  .mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+  }
