@@ -12,8 +12,8 @@ const model = (body, id = nextId++) => {
             id,
             nome: body.nome,
             cpf: body.cpf,
-            // viagem: ...
-            //passagem ...
+            viagem: body.viagem,
+            passagem: body.passagem,
             idade: body.idade,
             contato: body.contato
         }
@@ -30,7 +30,7 @@ const store = (body) => {
     return 400;
 };
 
-const show = id => db.find(el => el.id == id);
+const show_passageiro = id => db.find(el => el.id == id);
 
 const update = (body, id) => {
     const index = db.findIndex((el) => el.id == id);
@@ -57,6 +57,6 @@ const destroy = (id) => {
 const index = () => db;
 
 module.exports = {
-    store, index, show, update, destroy
+    store, index, show_passageiro, update, destroy
 }
 
